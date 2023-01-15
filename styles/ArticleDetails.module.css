@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: #c3c3c3;
+    width: 96vw;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.navigationBar {
+    width: 30%
+}
+
+.sectionBody {
+    width: 65%;
+}
+
+.detailsBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.thumbnailContainer {
+    position: relative;
+    width: 40%;
+    height: 10rem;
+    margin-right: 1rem;
+
+}
+
+.titleAndDescContainer {
+    width: 50%;
+    margin-left: 1rem
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.desc {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.actionsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.deleteArticle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 8rem;
+    background-color: #fa0230;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}

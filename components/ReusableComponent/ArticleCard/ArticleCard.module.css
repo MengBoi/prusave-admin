@@ -1,5 +1,47 @@
 .container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: greenyellow;
+}
+
+.thumbnail {
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.thumbnailContainer {
+    position: relative;
+    width: 100%;
+    height: 50%;
+
+
+}
+
+.bodyContainer {
+    padding: 1rem;
+    background-color: #E2E2E2;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    height: 50%;
+}
+
+.title {
+    font-weight: bold;
+    color: #68737A;
+    font-size: 1rem;
+}
+
+.desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* number of lines to show */
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+
 }
