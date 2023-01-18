@@ -4,14 +4,7 @@ const ArticleCard = (props) => {
   const { title, desc, thumbnail } = props;
   return (
     <div className={styles.container}>
-      <div className={styles.thumbnailContainer}>
-        <Image
-          className={styles.thumbnail}
-          src={thumbnail}
-          alt="thumbnail"
-          fill
-        />
-      </div>
+      <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" fill />
       <div className={styles.bodyContainer}>
         <div className={styles.title}>{title}</div>
         <div className={styles.desc}>{desc}</div>
