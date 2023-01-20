@@ -40,3 +40,25 @@
     margin-bottom: 1.5rem;
     height: 15rem;
 }
+
+.articleTabContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 3rem;
+    background-color: white;
+
+}
+
+.addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 2rem;
+    background-color: rgb(197, 12, 30);
+    color: white;
+    border-radius: 0.5rem;
+}

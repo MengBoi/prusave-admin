@@ -1,6 +1,6 @@
 import DesktopHeader from "../components/ReusableComponent/DesktopHeader/DesktopHeader";
 import NavigationBar from "../components/ReusableComponent/NavigationBar/NavigationBar";
-import TabHeader from "../components/ReusableComponent/TabHeader/TabHeader";
+
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
@@ -9,9 +9,7 @@ const Home = () => {
       <DesktopHeader />
       <div className={styles.bodyContainer}>
         <NavigationBar />
-        <div className={styles.sectionBody}>
-          <TabHeader />
-        </div>
+        <div className={styles.sectionBody}></div>
       </div>
     </div>
   );
