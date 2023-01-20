@@ -1,6 +1,6 @@
 import DesktopHeader from "../components/ReusableComponent/DesktopHeader/DesktopHeader";
 import NavigationBar from "../components/ReusableComponent/NavigationBar/NavigationBar";
-import TabHeader from "../components/ReusableComponent/TabHeader/TabHeader";
+
 import styles from "../styles/ArticleDetails.module.css";
 import Image from "next/image";
 import { ButtonBase } from "@mui/material";
@@ -13,7 +13,6 @@ const ArticleDetails = () => {
           <NavigationBar />
         </div>
         <div className={styles.sectionBody}>
-          <TabHeader title="Article Details" />
           <div className={styles.detailsBody}>
             <div className={styles.titleAndDescContainer}>
               <div className={styles.title}>
