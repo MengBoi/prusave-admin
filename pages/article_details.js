@@ -1,12 +1,58 @@
 import DesktopHeader from "../components/ReusableComponent/DesktopHeader/DesktopHeader";
 import NavigationBar from "../components/ReusableComponent/NavigationBar/NavigationBar";
-
 import styles from "../styles/ArticleDetails.module.css";
-import Image from "next/image";
 import { ButtonBase } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ConfirmModal from "../components/ReusableComponent/ConfirmModal/ConfirmModal";
+
 const ArticleDetails = () => {
+  const router = useRouter();
+  const { aid } = router.query;
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [isConfirmModalShow, setIsConfirmModalShow] = useState(false);
+  useEffect(() => {
+    const getArticleDetails = async () => {
+      const articlesResponse = await axios.get(
+        process.env.NEXT_PUBLIC_API_END_POINT + "/articles/" + aid
+      );
+      const { title, desc, thumbnail } = articlesResponse.data;
+      setTitle(title);
+      setDesc(desc);
+      setThumbnail(thumbnail);
+    };
+    if (!router.isReady) {
+      return;
+    }
+    getArticleDetails();
+  }, [router.isReady]);
+  const onDeleteClick = () => {
+    setIsConfirmModalShow(true);
+  };
+  const onDeleteConfirmClick = async () => {
+    const response = await axios.delete(
+      "https://prusave-backend-hc6oexyfvq-as.a.run.app/articles/" + aid,
+      {
+        headers: {
+          accept: "*/*",
+        },
+      }
+    );
+    if (response.status == 200) {
+      router.push("/articles");
+    }
+  };
   return (
     <div className={styles.container}>
+      <ConfirmModal
+        open={isConfirmModalShow}
+        setOpen={setIsConfirmModalShow}
+        msg="Are you sure you want to delete?"
+        onConfirm={onDeleteConfirmClick}
+      />
       <DesktopHeader />
       <div className={styles.bodyContainer}>
         <div className={styles.navigationBar}>
@@ -15,36 +61,13 @@ const ArticleDetails = () => {
         <div className={styles.sectionBody}>
           <div className={styles.detailsBody}>
             <div className={styles.titleAndDescContainer}>
-              <div className={styles.title}>
-                How to save money without compromise drinking coffee?
-              </div>
-              <div className={styles.desc}>
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the word in
-                classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of “de Finibus
-                Bonorum et Malorum” (The Extremes of Good and Evil) by Cicero,
-                written in 45 BC. This book is a treatise on the theory of
-                ethics, very popular during the Renaissance. The first line of
-                Lorem Ipsum, “Lorem ipsum dolor sit amet..”, comes from a line
-                in section 1.10.32. The standard chunk of Lorem Ipsum used since
-                the 1500s is reproduced below for those interested. Sections
-                1.10.32 and 1.10.33 from 'de Finibus Bonorum et Malorum' by
-                Cicero are also reproduced in their exact original form,
-                accompanied by English versions from the 1914 translation by H.
-                Rackham.
-              </div>
+              <div className={styles.title}>{title}</div>
+              <div className={styles.desc}>{desc}</div>
             </div>
-            <div className={styles.thumbnailContainer}>
-              <Image src="/jpeg/coffee-machine.jpeg" fill />
-            </div>
+            <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" />
           </div>
           <div className={styles.actionsContainer}>
-            <ButtonBase sx={{ borderRadius: "0.5rem" }}>
+            <ButtonBase sx={{ borderRadius: "0.5rem" }} onClick={onDeleteClick}>
               <div className={styles.deleteArticle}>Delete Article</div>
             </ButtonBase>
           </div>

@@ -36,12 +36,11 @@
 }
 
 
-.thumbnailContainer {
-    position: relative;
-    width: 40%;
-    height: 10rem;
+.thumbnail {
+    width: 30%;
+    height: 100%;
     margin-right: 1rem;
-
+    border-radius: 0.5rem;
 }
 
 .titleAndDescContainer {
@@ -58,6 +57,7 @@
 .desc {
     font-size: 1rem;
     text-align: justify;
+    line-height: 1.5rem;
 }
 
 .actionsContainer {
