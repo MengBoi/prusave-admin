@@ -1,9 +1,10 @@
+import stripHtmlString from "../../../utils/stripHtmlString";
 import styles from "./ArticleCard.module.css";
 
 const ArticleCard = (props) => {
   const { title, desc, thumbnail } = props;
-  const strippedTitle = title.replace(/<\/?[^>]+(>|$)/g, "");
-  const descTitle = desc.replace(/<\/?[^>]+(>|$)/g, "");
+  const strippedTitle = stripHtmlString(title);
+  const descTitle = stripHtmlString(desc);
   return (
     <div className={styles.container}>
       <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" fill />
