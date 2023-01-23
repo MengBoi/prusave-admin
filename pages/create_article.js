@@ -1,4 +1,5 @@
-import { ButtonBase, TextField } from "@mui/material";
+import ButtonBase from "@mui/material/ButtonBase";
+import TextField from "@mui/material/TextField";
 import DesktopHeader from "../components/ReusableComponent/DesktopHeader/DesktopHeader";
 import NavigationBar from "../components/ReusableComponent/NavigationBar/NavigationBar";
 import styles from "../styles/CreateArticle.module.css";

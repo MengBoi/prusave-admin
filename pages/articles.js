@@ -30,15 +30,15 @@ const Articles = () => {
   const renderArticles = () => {
     try {
       return articles.map((article) => {
-        const { title, desc, thumbnail } = article;
+        const { id, title, desc, thumbnail } = article;
         return (
-          <div className={styles.articleCard} onClick={onArticleClick}>
+          <div key={id} className={styles.articleCard} onClick={onArticleClick}>
             <ArticleCard title={title} desc={desc} thumbnail={thumbnail} />
           </div>
         );
       });
     } catch (error) {
-      return;
+      console.log("error", error);
     }
   };
   return (

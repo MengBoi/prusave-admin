@@ -1,0 +1,31 @@
+.container {
+    padding: 2rem;
+}
+
+.prusave {
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    color: #68737A;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pru {
+    color: #ED1B2E;
+    font-weight: bolder;
+}
+
+.username {
+    margin-top: 5rem;
+    font-size: 1.5rem;
+}
+
+.textfieldContainer {
+    margin-top: 1rem;
+    width: 25rem;
+}
+
+.password {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
