@@ -10,6 +10,10 @@ import generateFileName from "../utils/generateFileName";
 import { storage } from "../config/firebase-config";
 import axios from "axios";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
+
 const CreateArticle = () => {
   const router = useRouter();
   const inputImageRef = useRef(null);
@@ -86,21 +90,23 @@ const CreateArticle = () => {
           <div className={styles.sectionTabContainer}>Create Article</div>
           <div className={styles.createArticleContainer}>
             <div className={styles.title}>Title</div>
-            <TextField
+            {/* <TextField
               variant="outlined"
               sx={{ width: "100%" }}
               onChange={(event) => {
                 setTitle(event.target.value);
               }}
-            />
+            /> */}
+            <ReactQuill value={title} onChange={setTitle} />
             <div className={styles.desc}>Description</div>
-            <TextField
+            {/* <TextField
               variant="outlined"
               multiline
               onChange={(event) => {
                 setDesc(event.target.value);
               }}
-            />
+            /> */}
+            <ReactQuill value={desc} onChange={setDesc} />
             <div className={styles.thumbnail}>Thumbnail</div>
             <div className={styles.imageUploadContainer}>
               {renderPhotoBody()}

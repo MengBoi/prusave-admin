@@ -44,14 +44,15 @@
 }
 
 .titleAndDescContainer {
-    width: 50%;
+    width: 60%;
     margin-left: 1rem
 }
 
 .title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    line-height: 3rem;
 }
 
 .desc {

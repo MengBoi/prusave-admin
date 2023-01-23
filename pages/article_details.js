@@ -61,8 +61,18 @@ const ArticleDetails = () => {
         <div className={styles.sectionBody}>
           <div className={styles.detailsBody}>
             <div className={styles.titleAndDescContainer}>
-              <div className={styles.title}>{title}</div>
-              <div className={styles.desc}>{desc}</div>
+              <div
+                className={styles.title}
+                dangerouslySetInnerHTML={{ __html: title }}
+              >
+                {/* {title} */}
+              </div>
+              <div
+                className={styles.desc}
+                dangerouslySetInnerHTML={{ __html: desc }}
+              >
+                {/* {desc} */}
+              </div>
             </div>
             <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" />
           </div>
