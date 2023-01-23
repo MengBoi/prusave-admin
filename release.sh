@@ -1,0 +1,1 @@
+gcloud builds submit --tag gcr.io/skilled-anthem-351804/prusave-admin --project skilled-anthem-351804
