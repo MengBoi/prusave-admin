@@ -21,8 +21,8 @@ const Articles = () => {
     };
     getAllArticles();
   }, []);
-  const onArticleClick = () => {
-    router.push("article_details");
+  const onArticleClick = (aid) => {
+    router.push({ pathname: "article_details", query: { aid: aid } });
   };
   const onCreateArticleClick = () => {
     router.push("create_article");
@@ -32,7 +32,13 @@ const Articles = () => {
       return articles.map((article) => {
         const { id, title, desc, thumbnail } = article;
         return (
-          <div key={id} className={styles.articleCard} onClick={onArticleClick}>
+          <div
+            key={id}
+            className={styles.articleCard}
+            onClick={() => {
+              onArticleClick(id);
+            }}
+          >
             <ArticleCard title={title} desc={desc} thumbnail={thumbnail} />
           </div>
         );
