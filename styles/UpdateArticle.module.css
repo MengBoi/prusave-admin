@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: #c3c3c3;
+    height: 100vh;
+    padding-bottom: 10rem;
+    overflow: scroll;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+}
+
+.navigationBar {
+    width: 30%
+}
+
+.sectionBody {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.sectionTabContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    background-color: white;
+    height: 3rem;
+}
+
+.createArticleContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 1rem
+}
+
+.desktopHeaderContainer {
+    margin-top: 1rem;
+}
+
+.desc {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+}
+
+.thumbnail {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.imageUploadContainer {
+    display: flex;
+    align-items: flex-start;
+}
+
+
+
+.uploadedImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+    height: 15rem;
+    background-color: #dcdcdc;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    object-fit: cover;
+}
+
+.publish {
+    font-size: 1rem;
+    margin-top: 5rem;
+}
+
+.uploadBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    font-weight: bold;
+    color: white;
+    width: 10rem;
+    height: 3rem;
+    background-color: rgb(255, 0, 0);
+
+}
+
+.updateBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    font-weight: bold;
+    color: white;
+    width: 10rem;
+    height: 3rem;
+    background-color: #009CBD;
+
+
+}
+
+
+.actionsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}

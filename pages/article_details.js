@@ -29,6 +29,9 @@ const ArticleDetails = () => {
     }
     getArticleDetails();
   }, [router.isReady]);
+  const onEditClick = () => {
+    router.push({ pathname: "/update_articles", query: { aid } });
+  };
   const onDeleteClick = () => {
     setIsConfirmModalShow(true);
   };
@@ -77,6 +80,12 @@ const ArticleDetails = () => {
             <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" />
           </div>
           <div className={styles.actionsContainer}>
+            <ButtonBase
+              sx={{ borderRadius: "0.5rem", marginRight: "2rem" }}
+              onClick={onEditClick}
+            >
+              <div className={styles.editArticle}>Edit Article</div>
+            </ButtonBase>
             <ButtonBase sx={{ borderRadius: "0.5rem" }} onClick={onDeleteClick}>
               <div className={styles.deleteArticle}>Delete Article</div>
             </ButtonBase>

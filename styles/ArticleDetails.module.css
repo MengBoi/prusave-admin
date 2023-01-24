@@ -82,3 +82,16 @@
     font-weight: bold;
     border-radius: 0.5rem;
 }
+
+.editArticle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 8rem;
+    background-color: #009CBD;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
