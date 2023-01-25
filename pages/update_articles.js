@@ -118,7 +118,7 @@ const CreateArticle = () => {
             <div className={styles.publish}>Publish</div>
             <Switch
               checked={publish}
-              onChange={(event) => {
+              onChange={() => {
                 console.log("event", publish);
                 setPublish(!publish);
               }}
