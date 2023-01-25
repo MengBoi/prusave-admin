@@ -30,7 +30,7 @@ const Articles = () => {
   const renderArticles = () => {
     try {
       return articles.map((article) => {
-        const { id, title, desc, thumbnail } = article;
+        const { id, title, desc, thumbnail, isPublished } = article;
         return (
           <div
             key={id}
@@ -39,7 +39,12 @@ const Articles = () => {
               onArticleClick(id);
             }}
           >
-            <ArticleCard title={title} desc={desc} thumbnail={thumbnail} />
+            <ArticleCard
+              title={title}
+              desc={desc}
+              thumbnail={thumbnail}
+              isPublished={isPublished}
+            />
           </div>
         );
       });
