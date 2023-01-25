@@ -30,18 +30,12 @@
     justify-content: space-between;
     width: 100%;
     background-color: white;
-    margin-top: 1rem;
+
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
 
-.thumbnail {
-    width: 30%;
-    height: 100%;
-    margin-right: 1rem;
-    border-radius: 0.5rem;
-}
 
 .titleAndDescContainer {
     width: 60%;
@@ -66,32 +60,66 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+
 }
 
-.deleteArticle {
+.editBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
-    width: 8rem;
-    background-color: #fa0230;
+    width: 4rem;
+    height: 2rem;
+    background-color: rgb(2, 169, 191);
     color: white;
-    font-size: 1rem;
-    font-weight: bold;
     border-radius: 0.5rem;
+    font-weight: bolder;
 }
 
-.editArticle {
+.deleteBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
-    width: 8rem;
-    background-color: #009CBD;
+    width: 4rem;
+    height: 2rem;
+    background-color: rgb(255, 0, 25);
     color: white;
-    font-size: 1rem;
-    font-weight: bold;
     border-radius: 0.5rem;
+    font-weight: bolder;
+}
+
+.articleTabContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 3rem;
+    background-color: white;
+    margin-bottom: 1rem;
+
+}
+
+.thumbnailAndStatusContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+}
+
+.statusContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.status {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
 }

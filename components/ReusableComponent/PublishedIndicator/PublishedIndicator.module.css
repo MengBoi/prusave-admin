@@ -1,0 +1,12 @@
+.publishedIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(68, 68, 68);
+    border-radius: 1rem;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}

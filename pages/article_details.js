@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ConfirmModal from "../components/ReusableComponent/ConfirmModal/ConfirmModal";
-
+import PublishedIndicator from "../components/ReusableComponent/PublishedIndicator/PublishedIndicator";
 const ArticleDetails = () => {
   const router = useRouter();
   const { aid } = router.query;
@@ -62,6 +62,23 @@ const ArticleDetails = () => {
           <NavigationBar />
         </div>
         <div className={styles.sectionBody}>
+          <div className={styles.articleTabContainer}>
+            <div>Article Details</div>
+            <div className={styles.actionsContainer}>
+              <ButtonBase
+                sx={{ borderRadius: "0.5rem", marginRight: "2rem" }}
+                onClick={onEditClick}
+              >
+                <div className={styles.editBtn}>Edit</div>
+              </ButtonBase>
+              <ButtonBase
+                sx={{ borderRadius: "0.5rem" }}
+                onClick={onDeleteClick}
+              >
+                <div className={styles.deleteBtn}>Delete</div>
+              </ButtonBase>
+            </div>
+          </div>
           <div className={styles.detailsBody}>
             <div className={styles.titleAndDescContainer}>
               <div
@@ -77,18 +94,17 @@ const ArticleDetails = () => {
                 {/* {desc} */}
               </div>
             </div>
-            <img className={styles.thumbnail} src={thumbnail} alt="thumbnail" />
-          </div>
-          <div className={styles.actionsContainer}>
-            <ButtonBase
-              sx={{ borderRadius: "0.5rem", marginRight: "2rem" }}
-              onClick={onEditClick}
-            >
-              <div className={styles.editArticle}>Edit Article</div>
-            </ButtonBase>
-            <ButtonBase sx={{ borderRadius: "0.5rem" }} onClick={onDeleteClick}>
-              <div className={styles.deleteArticle}>Delete Article</div>
-            </ButtonBase>
+            <div className={styles.thumbnailAndStatusContainer}>
+              <img
+                className={styles.thumbnail}
+                src={thumbnail}
+                alt="thumbnail"
+              />
+              <div className={styles.statusContainer}>
+                <div className={styles.status}>Status:</div>
+                <PublishedIndicator />
+              </div>
+            </div>
           </div>
         </div>
       </div>
