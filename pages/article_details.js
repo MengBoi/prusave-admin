@@ -13,16 +13,18 @@ const ArticleDetails = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+  const [isPublished, setIsPublished] = useState(false);
   const [isConfirmModalShow, setIsConfirmModalShow] = useState(false);
   useEffect(() => {
     const getArticleDetails = async () => {
       const articlesResponse = await axios.get(
         process.env.NEXT_PUBLIC_API_END_POINT + "/articles/" + aid
       );
-      const { title, desc, thumbnail } = articlesResponse.data;
+      const { title, desc, thumbnail, isPublished } = articlesResponse.data;
       setTitle(title);
       setDesc(desc);
       setThumbnail(thumbnail);
+      setIsPublished(isPublished);
     };
     if (!router.isReady) {
       return;
@@ -102,7 +104,7 @@ const ArticleDetails = () => {
               />
               <div className={styles.statusContainer}>
                 <div className={styles.status}>Status:</div>
-                <PublishedIndicator />
+                {isPublished && <PublishedIndicator />}
               </div>
             </div>
           </div>
