@@ -58,7 +58,9 @@ const ArticleDetails = () => {
         msg="Are you sure you want to delete?"
         onConfirm={onDeleteConfirmClick}
       />
-      <DesktopHeader />
+      <div>
+        <DesktopHeader />
+      </div>
       <div className={styles.bodyContainer}>
         <div className={styles.navigationBar}>
           <NavigationBar />

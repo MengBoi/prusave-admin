@@ -1,10 +1,17 @@
-import { ButtonBase } from "@mui/material";
+import ButtonBase from "@mui/material/ButtonBase";
 import TextField from "@mui/material/TextField";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useState } from "react";
 import styles from "../styles/Login.module.css";
+import FormControl from "@mui/material/FormControl";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+
 const Login = () => {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
   // useEffect(() => {
   //   if (router.pathname == "/login") {
   //     return;
@@ -15,6 +22,11 @@ const Login = () => {
   //     return;
   //   }
   // }, [router.events]);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   const onLoginClick = () => {
     router.push("/");
   };
@@ -29,12 +41,23 @@ const Login = () => {
       </div>
       <div className={styles.password}>Password</div>
       <div className={styles.textfieldContainer}>
-        <TextField
-          variant="outlined"
-          onChange={(event) => {}}
-          fullWidth
-          password
-        />
+        <FormControl sx={{ width: "100%" }} variant="outlined">
+          <OutlinedInput
+            type={showPassword ? "text" : "password"}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
       </div>
       <ButtonBase
         sx={{
