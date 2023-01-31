@@ -1,5 +1,31 @@
 .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: 100%;
     height: 5rem;
     background-color: white;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.name {
+    font-weight: bolder;
+    margin-left: 0.5rem;
+}
+
+.logoutBtn {
+    font-size: 1.1rem;
+    background-color: rgb(255, 0, 0);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bolder;
+}
+
+.welcomeContainer {
+    display: flex;
+    align-items: center;
 }
