@@ -2,21 +2,17 @@ import { useRouter } from "next/router";
 import styles from "../styles/Articles.module.css";
 import DesktopHeader from "../components/ReusableComponent/DesktopHeader/DesktopHeader";
 import NavigationBar from "../components/ReusableComponent/NavigationBar/NavigationBar";
-
 import ArticleCard from "../components/ReusableComponent/ArticleCard/ArticleCard";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { ButtonBase } from "@mui/material";
+import getRequest from "../utils/api/getRequest";
 
 const Articles = () => {
   const router = useRouter();
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     const getAllArticles = async () => {
-      const articlesResponse = await axios.get(
-        process.env.NEXT_PUBLIC_API_END_POINT + "/articles"
-      );
-      console.log(articlesResponse.data);
+      const articlesResponse = await getRequest("/articles");
       setArticles(articlesResponse.data);
     };
     getAllArticles();

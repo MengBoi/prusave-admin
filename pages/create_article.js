@@ -8,9 +8,10 @@ import { useRef, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import generateFileName from "../utils/generateFileName";
 import { storage } from "../config/firebase-config";
-import axios from "axios";
+import postRequest from "../utils/api/postRequest";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import Switch from "@mui/material/Switch";
@@ -29,27 +30,17 @@ const CreateArticle = () => {
     setImageFile(event.target.files[0]);
   };
   const submitArticle = async (imgUrl) => {
-    const submitResponse = await axios.post(
-      process.env.NEXT_PUBLIC_API_END_POINT + "articles",
-      // "http://localhost:3002/articles",
-      {
-        title: title,
-        desc: desc,
-        thumbnail: imgUrl,
-        isPublished: publish,
-      },
-      {
-        headers: {
-          accept: "*/*",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const submitResponse = await postRequest("articles", {
+      title: title,
+      desc: desc,
+      thumbnail: imgUrl,
+      isPublished: publish,
+    });
     if (submitResponse.status == 201) {
       router.push("/articles");
-    } else {
-      alert("error:");
+      return;
     }
+    alert("error:");
   };
   const uploadImage = () => {
     const filename = generateFileName();
