@@ -8,10 +8,14 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import postRequest from "../utils/api/postRequest";
 
 const Login = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   // useEffect(() => {
   //   if (router.pathname == "/login") {
   //     return;
@@ -27,7 +31,13 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  const onLoginClick = () => {
+  const onLoginClick = async () => {
+    const response = await postRequest("auth/login", {
+      username: username,
+      password: password,
+    });
+    const token = response.data.token;
+    localStorage.setItem("token", token);
     router.push("/");
   };
   return (
@@ -37,11 +47,23 @@ const Login = () => {
       </div>
       <div className={styles.username}>Username</div>
       <div className={styles.textfieldContainer}>
-        <TextField variant="outlined" onChange={(event) => {}} fullWidth />
+        <TextField
+          variant="outlined"
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+          fullWidth
+        />
       </div>
       <div className={styles.password}>Password</div>
       <div className={styles.textfieldContainer}>
-        <FormControl sx={{ width: "100%" }} variant="outlined">
+        <FormControl
+          sx={{ width: "100%" }}
+          variant="outlined"
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        >
           <OutlinedInput
             type={showPassword ? "text" : "password"}
             endAdornment={

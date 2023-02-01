@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ConfirmModal from "../components/ReusableComponent/ConfirmModal/ConfirmModal";
 import PublishedIndicator from "../components/ReusableComponent/PublishedIndicator/PublishedIndicator";
+import deleteRequest from "../utils/api/deleteRequest";
 const ArticleDetails = () => {
   const router = useRouter();
   const { aid } = router.query;
@@ -18,7 +19,7 @@ const ArticleDetails = () => {
   useEffect(() => {
     const getArticleDetails = async () => {
       const articlesResponse = await axios.get(
-        process.env.NEXT_PUBLIC_API_END_POINT + "/articles/" + aid
+        process.env.NEXT_PUBLIC_API_HOSTNAME + "/articles/" + aid
       );
       const { title, desc, thumbnail, isPublished } = articlesResponse.data;
       setTitle(title);
@@ -38,14 +39,7 @@ const ArticleDetails = () => {
     setIsConfirmModalShow(true);
   };
   const onDeleteConfirmClick = async () => {
-    const response = await axios.delete(
-      "https://prusave-backend-hc6oexyfvq-as.a.run.app/articles/" + aid,
-      {
-        headers: {
-          accept: "*/*",
-        },
-      }
-    );
+    const response = await deleteRequest("articles/" + aid);
     if (response.status == 200) {
       router.push("/articles");
     }

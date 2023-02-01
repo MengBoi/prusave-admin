@@ -8,13 +8,13 @@ import { useRef, useState, useEffect } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import generateFileName from "../utils/generateFileName";
 import { storage } from "../config/firebase-config";
-import axios from "axios";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import Switch from "@mui/material/Switch";
-
+import getRequest from "../utils/api/getRequest";
+import patchRequest from "../utils/api/patchRequest";
 const CreateArticle = () => {
   const router = useRouter();
   const { aid } = router.query;
@@ -27,9 +27,7 @@ const CreateArticle = () => {
   const [publish, setPublish] = useState(false);
   useEffect(() => {
     const getArticleDetails = async () => {
-      const articlesResponse = await axios.get(
-        process.env.NEXT_PUBLIC_API_END_POINT + "/articles/" + aid
-      );
+      const articlesResponse = await getRequest("/articles/" + aid);
       const { title, desc, thumbnail, isPublished } = articlesResponse.data;
       setTitle(title);
       setDesc(desc);
@@ -50,22 +48,12 @@ const CreateArticle = () => {
   };
 
   const updateArticle = async (imgUrl) => {
-    const updateResponse = await axios.patch(
-      process.env.NEXT_PUBLIC_API_END_POINT + "/articles/" + aid,
-      // '{\n  "title": "string",\n  "desc": "string",\n  "thumbnail": "string",\n  "isPublished": true\n}',
-      {
-        title: title,
-        desc: desc,
-        thumbnail: imgUrl,
-        isPublished: publish,
-      },
-      {
-        headers: {
-          accept: "*/*",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const updateResponse = await patchRequest("/articles/" + aid, {
+      title: title,
+      desc: desc,
+      thumbnail: imgUrl,
+      isPublished: publish,
+    });
     if (updateResponse.status == 200) {
       router.push({ pathname: "/article_details", query: { aid } });
     } else {

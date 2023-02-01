@@ -4,6 +4,7 @@ import styles from "./DesktopHeader.module.css";
 const DesktopHeader = () => {
   const router = useRouter();
   const onLogoutClick = () => {
+    localStorage.clear();
     router.push("/login");
   };
   return (
